@@ -1,0 +1,62 @@
+
+     <h1 style="color:green" class='text-center'>Login Page</h1>
+     <div class="panel panel-success">
+         <div class="panel-heading">
+            <h3> Login Form</h3>
+         </div>
+        <div class="panel-body">
+        <form #form="ngForm" novalidate (submit)="submitForm(form)">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group" [class.has-error]="firstname.invalid">
+                <label for='firstName' class="control-label">FirstName</label>
+                <input type="text" 
+                       placeholder="firstName" 
+                       name="firstName"
+                       id="firstName"
+                       required
+                       class="form-control"
+                       [ngModel]="model.firstName"
+                       (ngModelChange)="fisrtToUpper($event)"
+                       #firstname="ngModel"
+                >
+                <div class="alert alert-danger" *ngIf = "firstname.invalid">
+                     FirstName is Required
+                </div>
+                 
+            </div>
+        </div>
+        </div>
+       
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group" [class.has-error]="password.invalid && password.touched">
+                    
+                     <label for='password' class="control-label">Password</label>
+                     <input type="text" 
+                            placeholder="password" 
+                            name="password"
+                            id="password"
+                            required
+                            class="form-control"
+                            minlength= 5
+                            [(ngModel)]="model.password"
+                            #password="ngModel"
+                     >
+                     <div class="alert alert-danger" *ngIf = "password.invalid && password.touched">
+                           Minimum length must be 5
+                       </div>
+                    
+                </div>
+            </div>
+            </div>
+            
+                <button type="submit" 
+                        class="btn btn-success"
+                        [disabled]="disableSubmit"
+                        (click)="onBack()">
+                        Submit
+                </button>
+        </form>
+        </div>
+     </div>

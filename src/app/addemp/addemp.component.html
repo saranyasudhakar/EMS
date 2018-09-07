@@ -1,0 +1,329 @@
+
+<h1 style="color:green" class='text-center'>Create Employee</h1>
+     <div class="panel panel-success">
+         <div class="panel-heading">
+            <h3> Employee Form</h3>
+         </div>
+        <div class="panel-body">
+        <form #empForm="ngForm" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                        <div class="form-group">
+                                
+                                 <label for='userId' class="control-label">UserId</label>
+                                 <input type="text" 
+                                        placeholder="userId" 
+                                        name="userId"
+                                        id="userId"
+                                        class="form-control"
+                                        [(ngModel)]="empObj.userId"
+                                 >
+                                
+                            </div>
+                        </div> 
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                        
+                                         <label for='jobTitleName' class="control-label">JobTitleName</label>
+                                         <input type="text" 
+                                                placeholder="jobTitleName" 
+                                                name="jobTitleName"
+                                                id="jobTitleName"
+                                                class="form-control"
+                                                [(ngModel)]="empObj.jobTitleName"
+                                         >
+                                        
+                                    </div>
+                                </div> 
+                            </div>
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group" [class.has-error]="firstname.invalid">
+                <label for='firstName' class="control-label">FirstName</label>
+                <input type="text" 
+                       placeholder="firstName" 
+                       name="firstName"
+                       id="firstName"
+                       required
+                       class="form-control"
+                       [ngModel]="empObj.firstName"
+                       (ngModelChange)="fisrtToUpper($event)"
+                       #firstname="ngModel"
+                >
+                <div class="alert alert-danger" *ngIf = "firstname.invalid">
+                     FirstName is Required
+                </div>
+                 
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                 <label for='lasttName' class="control-label">LastName</label>
+                 <input type="text" 
+                        placeholder="lastName" 
+                        name="lasttName"
+                        id="lastName"
+                        class="form-control"
+                        [(ngModel)]="empObj.lastName"
+                 >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                
+            <div class="col-md-6">
+            <div class="form-group">
+                    
+                     <label for='preferredFullName' class="control-label">PrefferedFullName</label>
+                     <input type="text" 
+                            placeholder="preferredFullName" 
+                            name="preferredFullName"
+                            id="preferredFullName"
+                            class="form-control"
+                            [(ngModel)]="empObj.preferredFullName"
+                     >
+                    
+                </div>
+            </div> 
+            <div class="col-md-6">
+                    <div class="form-group">
+                            
+                             <label for='employeeCode' class="control-label">EmployeeCode</label>
+                             <input type="text" 
+                                    placeholder="employeeCode" 
+                                    name="employeeCode"
+                                    id="employeeCode"
+                                    class="form-control"
+                                    [(ngModel)]="empObj.employeeCode"
+                             >
+                            
+                        </div>
+                    </div> 
+            </div>
+            <div class="row">
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                    
+                                     <label for='region' class="control-label">Region</label>
+                                     <input type="text" 
+                                            placeholder="region" 
+                                            name="region"
+                                            id="region"
+                                            class="form-control"
+                                            [(ngModel)]="empObj.region"
+                                     >
+                                    
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                            
+                                             <label for='phoneNumber' class="control-label">PhoneNo</label>
+                                             <input type="text" 
+                                                    placeholder="phoneNumber" 
+                                                    name="phoneNumber"
+                                                    id="phoneNumber"
+                                                    class="form-control"
+                                                    [(ngModel)]="empObj.phoneNumber"
+                                             >
+                                            
+                                        </div>
+                                    </div> 
+            </div>
+            <div class="row">
+                    <div class="col-md-6">
+                            <div class="form-group" [class.has-error]="email.invalid && email.touched">
+                                <label for='emailAddress' class="control-label">Email</label>
+                                <input type="text" 
+                                       placeholder="emailAddress" 
+                                       name="emailAddress"
+                                       id="emailAddress"
+                                       class="form-control"
+                                       [(ngModel)]="empObj.emailAddress"
+                                       pattern ="^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-z]{2,5})$"
+                                       #email="ngModel"
+                                >
+                                <div class="alert alert-danger" *ngIf="email.invalid && email.touched" >
+                                        Please enter valid pattern
+                                   </div>
+                            </div>
+                        </div>
+            </div>
+            
+                    <div class="row">
+                            <div class="col-md-1 " >
+                              <button type="submit" 
+                                      class="btn btn-success" 
+                                     [disabled]="!empForm.form.valid" 
+                                     *ngIf="!employeeService.enableButton" 
+                                     (click)="submit()">Submit</button></div>
+                                <div class="col-md-1">     
+                              <button type="submit" 
+                                      class="btn btn-success" 
+            
+                                      (click)="save(empObj)">Save</button>
+                                    </div>
+                      <div class="col-md-1 " >
+                        <button type="submit" 
+                        class="btn btn-success"
+                        >
+                        Create
+                </button></div>
+                           
+                          </div>
+                        
+                
+        </form>
+        </div>
+     </div>
+
+
+
+
+
+
+
+
+<!--<h1 style="color:green" class='text-center'>Create Employee</h1>
+     <div class="panel panel-success">
+         <div class="panel-heading">
+            <h3> Employee Form</h3>
+         </div>
+        <div class="panel-body">
+        <form #form="ngForm" novalidate (submit)="submitForm(form)">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group" [class.has-error]="firstname.invalid">
+                <label for='firstName' class="control-label">FirstName</label>
+                <input type="text" 
+                       placeholder="firstName" 
+                       name="firstName"
+                       id="firstName"
+                       required
+                       class="form-control"
+                       [ngModel]="model.firstName"
+                       (ngModelChange)="fisrtToUpper($event)"
+                       #firstname="ngModel"
+                >
+                <div class="alert alert-danger" *ngIf = "firstname.invalid">
+                     FirstName is Required
+                </div>
+                 
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                 <label for='lasttName' class="control-label">LastName</label>
+                 <input type="text" 
+                        placeholder="lastName" 
+                        name="lasttName"
+                        id="lastName"
+                        class="form-control"
+                        [(ngModel)]="model.lastName"
+                 >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md-6">
+                <div class="form-group" [class.has-error]="email.invalid && email.touched">
+                    <label for='email' class="control-label">Email</label>
+                    <input type="text" 
+                           placeholder="email" 
+                           name="email"
+                           id="email"
+                           class="form-control"
+                           [(ngModel)]="model.email"
+                           pattern ="^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-z]{2,5})$"
+                           #email="ngModel"
+                    >
+                    <div class="alert alert-danger" *ngIf="email.invalid && email.touched" >
+                            Please enter valid pattern
+                       </div>
+                </div>
+            </div>
+                <div class="form-group" [class.has-error]="password.invalid && password.touched">
+                    <div class="col-md-6">
+                     <label for='password' class="control-label">Password</label>
+                     <input type="password" 
+                            placeholder="password" 
+                            name="password"
+                            id="password"
+                            class="form-control"
+                            minlength= 5
+                            [(ngModel)]="model.password"
+                            #password="ngModel"
+                     >
+                     <div class="alert alert-danger" *ngIf = "password.invalid && password.touched">
+                           Minimum length must be 5
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio"
+                            name="gender"
+                            value="female"
+                            [(ngModel)]="model.gender">
+                            Female
+                </label>
+            </div>
+            <div class="radio">
+                    <label>
+                        <input type="radio"
+                                name="gender"
+                                value="Male"
+                                [(ngModel)]="model.gender">
+                                Male
+                    </label>
+                </div>
+                <div class="checkbox">
+                        <label>
+                            <input type="checkbox"
+                                    name="fullTime"
+                                    [(ngModel)]="model.fullTime" >
+                    
+                                    FullTime
+                        </label>
+                    </div>
+                    <div class="form-group" [class.has-error]="hasCodelangError">
+                        <label for="codelang" class="control-label">Codelang</label>
+                        <select class="form-control"
+                                name="codelang"
+                                id="codelang"
+                                (blur)="validateCodeLang($event)"
+                                [(ngModel)]="model.codelang">
+                           <option value="default">
+                               Please Select Lang
+                           </option>     
+                           <option *ngFor="let lang of languages">
+                              {{ lang }}</option> 
+                           
+                        </select>
+                        <div class="alert alert-danger" *ngIf="hasCodelangError">
+                            Please Select Valid Input
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-12 pull-right" >
+                              <button type="submit" 
+                                      class="btn btn-primary" 
+                                     [disabled]="!empForm.form.valid" 
+                                     *ngIf="!employeeService.enableButton" 
+                                     (click)="submit()">Submit</button>
+                              <button type="submit" 
+                                      class="btn btn-primary" 
+                                      *ngIf="employeeService.enableButton" 
+                                      (click)="save(empObj)">Save</button>
+                            </div>
+                          </div>
+                        
+                <button type="submit" 
+                        class="btn btn-success"
+                        [disabled]="disableSubmit">
+                        Create
+                </button>
+        </form>
+        </div>
+     </div>-->

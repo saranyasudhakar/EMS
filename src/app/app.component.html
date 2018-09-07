@@ -1,0 +1,47 @@
+
+<div>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Employee Management</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                      
+                    <li class="active"><a [routerLink]="['/home']">Home</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin 
+                            <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        
+                        <li><a [routerLink]="['/view']"><b>View Employees</b></a></li>
+                        <li><a [routerLink]="['/addemp']"><b>Create Employee</b></a></li>
+                      
+                        <li><a [routerLink]="['/roles']"> <b>User roles</b></a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users 
+                        <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    
+                    <li><a [routerLink]="['/login']"><b>Login</b></a></li>
+                    <li><a [routerLink]="['/register']"><b>Register</b></a></li>
+                  
+                    <li><a [routerLink]="['/view']"> <b>Manage Details</b></a></li>
+                  </ul>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a [routerLink]="['/login']"><b><span class="glyphicon glyphicon-log-in"></span> Login</b></a></li>
+                  </ul>
+                 
+                </div>
+              </nav>
+                   <div>
+                       <router-outlet></router-outlet>
+                    </div>
+             
+        
+            </div>
+
+
+
+            
+                

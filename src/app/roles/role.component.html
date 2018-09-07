@@ -1,0 +1,50 @@
+<h1 style="color:green" class="text-center"> Add New Role</h1>
+
+<div class="panel panel-success">
+        <div class="panel-heading">
+           <h3> New Role</h3>
+        </div>
+       <div class="panel-body">
+       <form #form="ngForm" novalidate >
+       <div class="row">
+           <div class="col-md-5">
+           <div class="form-group"[class.has-error]="role.invalid && role.touched" >
+               <label for='role' class="control-label">RoleTitle</label>
+               <input type="text" 
+                      placeholder="RoleTitle" 
+                      name="role"
+                      id="role"
+                      required
+                      class="form-control"
+                      [ngModel]="model.role"
+                      #role="ngModel">
+                      <div class="alert alert-danger" *ngIf = "role.invalid && role.touched">
+                            Role is Required
+                       </div>
+                      
+               </div>
+              </div>
+              </div> 
+             <div class="row">
+               <div class="form-group" >
+                <div class="col-md-5">
+                 <label for='roledesc' class="control-label">Role Desciption</label>
+                 <input type="text" 
+                        placeholder="Role Description" 
+                        name="roledesc"
+                        id="roledesc"
+                        required
+                        class="form-control"
+                        
+                 >
+                 
+                </div>
+            </div>
+           </div><br>
+           <button type="submit" 
+           class="btn btn-success" (click)="success()">
+           Submit
+    </button>
+           </form>
+           </div>
+         </div>   

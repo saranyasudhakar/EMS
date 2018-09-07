@@ -1,0 +1,52 @@
+<div class="panel panel-success">
+        <div class="panel panel-heading"><h2>Employees List</h2></div>
+        <div class="panel panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                       <tr class="center">
+                           <th>
+                                userId 
+                           </th>
+                           <th>jobTitleName</th>
+                           <th>firstName</th>
+                           <th>lastName</th>
+                           <th >preferredFullName</th>
+                           <th >employeeCode</th>
+                           <th >region</th>
+                           <th >phoneNumber</th>
+                           <th >emailAddress</th>
+    
+    
+    
+                       </tr>
+                    </thead>
+                    <tbody class="center">
+                        <tr *ngFor="let emp of employees;let i=index" >
+                            <td>
+                            {{emp.userId}}</td>
+                            <td>{{emp.jobTitleName}}</td>
+                           <td> {{emp.firstName}}</td>
+                           <td>{{emp.lastName}}</td>
+                           <td>{{emp.preferredFullName}}
+                            </td>
+                            <td>{{emp.employeeCode}}</td>
+                            <td>{{emp.region}}</td>
+                            <td>{{emp.phoneNumber}}</td>
+                            <td>{{emp.emailAddress}}</td>
+                            <td>
+                                    <button type="submit" class="btn btn-success" (click)="update(emp,i)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                                   <td> <button type="submit" class="btn btn-success" (click)="delete(i)"><span class="glyphicon glyphicon-trash"></span> </button>
+                                
+                                       
+                                         
+                                  </td>
+                        </tr>
+
+    
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>
+        </div>
